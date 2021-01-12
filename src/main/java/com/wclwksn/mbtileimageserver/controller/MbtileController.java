@@ -39,6 +39,12 @@ public class MbtileController {
 		return String.format("{\"path\": \"%s\"}", mbpath);
 	}
 
+	/**
+	 * 示例请求
+	 * http://localhost:8433/mbtiles/mbtest1.mbtiles/metadata
+	 * @param layer
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping(method = RequestMethod.GET, path = "{layer}/metadata", produces = {
 			"application/json;charset=UTF-8" })
@@ -74,6 +80,15 @@ public class MbtileController {
 		return _upstatus;
 	}
 
+	/**
+	 * 示例请求：
+	 * http://localhost:8433/mbtiles/mbtest1.mbtiles/7/105/79
+	 * @param x
+	 * @param y
+	 * @param zoom
+	 * @param layer
+	 * @return
+	 */
 	@GetMapping("{layer}/{zoom}/{x}/{y}")
 	public ResponseEntity getTile(@PathVariable int x, @PathVariable int y, @PathVariable int zoom,
 			@PathVariable String layer) {
